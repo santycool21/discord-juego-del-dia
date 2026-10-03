@@ -878,8 +878,12 @@ async def recomendar_juego():
     # =====================================================
 
     await canal.send(
-        embed=embed
+    content="@everyone La recomendación de hoy es:",
+    embed=embed,
+    allowed_mentions=discord.AllowedMentions(
+        everyone=True
     )
+)
 
 
 # =========================================================
