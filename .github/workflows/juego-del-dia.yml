@@ -1,6 +1,12 @@
 name: Juego del día
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/juego-del-dia.yml"
+
   schedule:
     - cron: "*/5 * * * *"
 
