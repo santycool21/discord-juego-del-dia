@@ -13,13 +13,14 @@
         2003,
         1291,
         11137,
-        2973
+        2973,
+        3212
     ],
     "plataformas": [
-        "Nintendo Switch",
         "Xbox 360",
         "PlayStation 3",
         "PlayStation 5",
-        "Xbox"
+        "Xbox",
+        "Xbox One"
     ]
 }
