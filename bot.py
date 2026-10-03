@@ -7,7 +7,6 @@ import asyncio
 import datetime
 
 from dotenv import load_dotenv
-from deep_translator import GoogleTranslator
 
 
 # =========================================================
@@ -143,18 +142,42 @@ async def traducir_descripcion(texto):
 
     try:
 
-        traduccion = await asyncio.to_thread(
-            GoogleTranslator(
-                source="auto",
-                target="es"
-            ).translate,
-            texto
-        )
+        url = "https://api.mymemory.translated.net/get"
 
-        if traduccion:
-            return traduccion
+        params = {
+            "q": texto,
+            "langpair": "en|es"
+        }
 
-        return texto
+        async with aiohttp.ClientSession() as session:
+
+            async with session.get(
+                url,
+                params=params
+            ) as response:
+
+                if response.status != 200:
+
+                    print(
+                        "⚠️ Error de MyMemory:",
+                        response.status
+                    )
+
+                    return texto
+
+                datos = await response.json()
+
+                traduccion = (
+                    datos
+                    .get("responseData", {})
+                    .get("translatedText")
+                )
+
+                if traduccion:
+
+                    return traduccion
+
+                return texto
 
     except Exception as error:
 
@@ -162,9 +185,6 @@ async def traducir_descripcion(texto):
             "⚠️ No se pudo traducir la descripción:",
             error
         )
-
-        # Si falla la traducción,
-        # usamos la descripción original.
 
         return texto
 

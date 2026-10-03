@@ -24,7 +24,7 @@ jobs:
 
       - name: Instalar dependencias
         run: |
-          pip install discord.py aiohttp python-dotenv deep-translator
+          pip install discord.py aiohttp python-dotenv
 
       - name: Crear archivo .env
         run: |
