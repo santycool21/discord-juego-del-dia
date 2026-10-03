@@ -2,7 +2,7 @@ name: Juego del día
 
 on:
   schedule:
-    - cron: "0 13 * * *"
+    - cron: "*/5 * * * *"
 
   workflow_dispatch:
 
