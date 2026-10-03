@@ -140,52 +140,114 @@ async def traducir_descripcion(texto):
     if not texto:
         return "Sin descripción disponible."
 
+    MAX_CARACTERES = 450
+
+    # Dividir el texto en partes intentando respetar palabras
+    partes = []
+    texto_restante = texto
+
+    while len(texto_restante) > MAX_CARACTERES:
+
+        posicion = texto_restante.rfind(
+            " ",
+            0,
+            MAX_CARACTERES
+        )
+
+        if posicion == -1:
+            posicion = MAX_CARACTERES
+
+        partes.append(
+            texto_restante[:posicion]
+        )
+
+        texto_restante = (
+            texto_restante[posicion:]
+            .lstrip()
+        )
+
+    if texto_restante:
+        partes.append(texto_restante)
+
+    traducciones = []
+
     try:
-
-        url = "https://api.mymemory.translated.net/get"
-
-        params = {
-            "q": texto,
-            "langpair": "en|es"
-        }
 
         async with aiohttp.ClientSession() as session:
 
-            async with session.get(
-                url,
-                params=params
-            ) as response:
+            for numero, parte in enumerate(
+                partes,
+                start=1
+            ):
 
-                if response.status != 200:
-
-                    print(
-                        "⚠️ Error de MyMemory:",
-                        response.status
-                    )
-
-                    return texto
-
-                datos = await response.json()
-
-                traduccion = (
-                    datos
-                    .get("responseData", {})
-                    .get("translatedText")
+                print(
+                    f"🌎 Traduciendo parte "
+                    f"{numero}/{len(partes)}..."
                 )
 
-                if traduccion:
+                url = (
+                    "https://api.mymemory.translated.net/get"
+                )
 
-                    return traduccion
+                params = {
+                    "q": parte,
+                    "langpair": "en|es"
+                }
 
-                return texto
+                async with session.get(
+                    url,
+                    params=params
+                ) as response:
+
+                    if response.status != 200:
+
+                        print(
+                            "⚠️ Error de MyMemory:",
+                            response.status
+                        )
+
+                        return texto
+
+                    datos = await response.json()
+
+                    traduccion = (
+                        datos
+                        .get("responseData", {})
+                        .get("translatedText")
+                    )
+
+                    if not traduccion:
+
+                        print(
+                            "⚠️ MyMemory no devolvió "
+                            "una traducción."
+                        )
+
+                        return texto
+
+                    traducciones.append(
+                        traduccion
+                    )
+
+                    # Pequeña pausa para evitar
+                    # demasiadas solicitudes seguidas.
+                    await asyncio.sleep(0.5)
+
+        resultado = " ".join(
+            traducciones
+        )
+
+        return resultado
 
     except Exception as error:
 
         print(
-            "⚠️ No se pudo traducir la descripción:",
+            "⚠️ No se pudo traducir "
+            "la descripción:",
             error
         )
 
+        # Si falla, mantenemos la descripción original.
         return texto
 
 
