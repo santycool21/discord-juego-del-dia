@@ -7,6 +7,7 @@ import asyncio
 import datetime
 
 from dotenv import load_dotenv
+from deep_translator import GoogleTranslator
 
 
 # =========================================================
@@ -19,7 +20,7 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 TWITCH_CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
 TWITCH_CLIENT_SECRET = os.getenv("TWITCH_CLIENT_SECRET")
 
-CHANNEL_ID = 1555734260839751820
+CHANNEL_ID = 1347676865963491349
 
 PUNTUACION_MINIMA = 65
 VOTOS_MINIMOS = 5
@@ -95,10 +96,6 @@ def cargar_historial():
 
             datos = json.load(archivo)
 
-            # Compatibilidad con el formato anterior.
-            # Antes juegos.json era simplemente una lista
-            # de IDs.
-
             if isinstance(datos, list):
 
                 return {
@@ -133,6 +130,43 @@ def guardar_historial(datos):
             indent=4,
             ensure_ascii=False
         )
+
+
+# =========================================================
+# TRADUCIR DESCRIPCIÓN
+# =========================================================
+
+async def traducir_descripcion(texto):
+
+    if not texto:
+        return "Sin descripción disponible."
+
+    try:
+
+        traduccion = await asyncio.to_thread(
+            GoogleTranslator(
+                source="auto",
+                target="es"
+            ).translate,
+            texto
+        )
+
+        if traduccion:
+            return traduccion
+
+        return texto
+
+    except Exception as error:
+
+        print(
+            "⚠️ No se pudo traducir la descripción:",
+            error
+        )
+
+        # Si falla la traducción,
+        # usamos la descripción original.
+
+        return texto
 
 
 # =========================================================
@@ -194,33 +228,26 @@ async def buscar_juegos():
 
     todos_los_juegos = []
 
-    # Diferentes bloques de juegos.
-    # Cada uno busca una parte distinta del catálogo.
-
     consultas = [
 
-        # Juegos muy populares
         """
         sort total_rating_count desc;
         limit 500;
         offset 0;
         """,
 
-        # Juegos con bastantes valoraciones
         """
         sort total_rating_count desc;
         limit 500;
         offset 500;
         """,
 
-        # Juegos con menos valoraciones
         """
         sort total_rating_count asc;
         limit 500;
         offset 0;
         """,
 
-        # Juegos de puntuación alta
         """
         sort total_rating desc;
         limit 500;
@@ -282,10 +309,6 @@ async def buscar_juegos():
                     juegos
                 )
 
-    # Eliminar posibles duplicados.
-    # Algunos juegos pueden aparecer
-    # en más de una consulta.
-
     juegos_unicos = {}
 
     for juego in todos_los_juegos:
@@ -327,12 +350,8 @@ def filtrar_juegos(juegos):
 
     for juego in juegos:
 
-        # Evitar juegos ya recomendados
-
         if juego.get("id") in historial:
             continue
-
-        # Puntuación
 
         puntuacion = juego.get(
             "total_rating"
@@ -344,8 +363,6 @@ def filtrar_juegos(juegos):
         if puntuacion < PUNTUACION_MINIMA:
             continue
 
-        # Cantidad de valoraciones
-
         votos = juego.get(
             "total_rating_count",
             0
@@ -353,8 +370,6 @@ def filtrar_juegos(juegos):
 
         if votos < VOTOS_MINIMOS:
             continue
-
-        # Plataformas
 
         plataformas = juego.get(
             "platforms",
@@ -371,17 +386,11 @@ def filtrar_juegos(juegos):
         ):
             continue
 
-        # Nombre
-
         if not juego.get("name"):
             continue
 
-        # Descripción
-
         if not juego.get("summary"):
             continue
-
-        # Géneros
 
         if not juego.get("genres"):
             continue
@@ -505,9 +514,6 @@ async def recomendar_juego():
 
     grupos = []
 
-    # Mayor posibilidad de juegos
-    # de puntuación media.
-
     if juegos_65_69:
         grupos.extend(
             [juegos_65_69] * 4
@@ -533,7 +539,6 @@ async def recomendar_juego():
     )
 
     candidatos = grupo_elegido.copy()
-
 
     # =====================================================
     # VARIEDAD DE PLATAFORMAS
@@ -563,10 +568,6 @@ async def recomendar_juego():
             )
         )
 
-        # Si ninguna plataforma del juego
-        # apareció recientemente,
-        # le damos prioridad.
-
         if not plataformas_validas.intersection(
             set(historial_plataformas)
         ):
@@ -579,7 +580,6 @@ async def recomendar_juego():
 
         candidatos = candidatos_variedad
 
-
     # =====================================================
     # ELEGIR JUEGO
     # =====================================================
@@ -587,7 +587,6 @@ async def recomendar_juego():
     juego = random.choice(
         candidatos
     )
-
 
     # =====================================================
     # GUARDAR HISTORIAL DEL JUEGO
@@ -600,7 +599,6 @@ async def recomendar_juego():
     historial_juegos.append(
         juego["id"]
     )
-
 
     # =====================================================
     # GUARDAR PLATAFORMA UTILIZADA
@@ -632,7 +630,6 @@ async def recomendar_juego():
             ]
         )
 
-
     # =====================================================
     # GUARDAR TODO
     # =====================================================
@@ -648,7 +645,6 @@ async def recomendar_juego():
     guardar_historial(
         datos_historial
     )
-
 
     # =====================================================
     # MOSTRAR EN CONSOLA
@@ -669,7 +665,6 @@ async def recomendar_juego():
         f"{juego.get('total_rating_count', 0)}"
     )
 
-
     # =====================================================
     # OBTENER CANAL DE DISCORD
     # =====================================================
@@ -685,7 +680,6 @@ async def recomendar_juego():
         )
 
         return
-
 
     # =====================================================
     # INFORMACIÓN DEL JUEGO
@@ -711,12 +705,26 @@ async def recomendar_juego():
 
         año = fecha.year
 
-
     puntuacion = juego.get(
         "total_rating",
         0
     )
 
+    # =====================================================
+    # TRADUCIR DESCRIPCIÓN
+    # =====================================================
+
+    print(
+        "🌎 Traduciendo descripción..."
+    )
+
+    descripcion = await traducir_descripcion(
+        juego["summary"]
+    )
+
+    print(
+        "✅ Descripción traducida."
+    )
 
     # =====================================================
     # CREAR EMBED
@@ -724,9 +732,8 @@ async def recomendar_juego():
 
     embed = discord.Embed(
         title="🎮 Juego recomendado del día",
-        description=juego["summary"]
+        description=descripcion
     )
-
 
     embed.add_field(
         name="🕹️ Plataformas",
@@ -738,7 +745,6 @@ async def recomendar_juego():
         inline=False
     )
 
-
     embed.add_field(
         name="🎭 Género",
         value=(
@@ -749,20 +755,17 @@ async def recomendar_juego():
         inline=True
     )
 
-
     embed.add_field(
         name="📅 Año",
         value=str(año),
         inline=True
     )
 
-
     embed.add_field(
         name="⭐ Puntuación IGDB",
         value=f"{puntuacion:.1f}/100",
         inline=True
     )
-
 
     # =====================================================
     # PORTADA
@@ -787,7 +790,6 @@ async def recomendar_juego():
         embed.set_thumbnail(
             url=imagen
         )
-
 
     # =====================================================
     # ENVIAR A DISCORD
