@@ -810,26 +810,25 @@ async def on_ready():
         f"{client.user}"
     )
 
-    while True:
+    try:
 
-        try:
+        await recomendar_juego()
 
-            await recomendar_juego()
-
-        except Exception as error:
-
-            print(
-                "❌ Ocurrió un error:",
-                error
-            )
+    except Exception as error:
 
         print(
-            "⏰ Esperando 24 horas..."
+            "❌ Ocurrió un error:",
+            error
         )
 
-        await asyncio.sleep(
-            60 * 60 * 24
+    finally:
+
+        print(
+            "✅ Recomendación enviada. "
+            "Cerrando bot..."
         )
+
+        await client.close()
 
 
 # =========================================================
