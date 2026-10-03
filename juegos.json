@@ -9,13 +9,14 @@
         1049,
         5328,
         1619,
-        109462
+        109462,
+        2003
     ],
     "plataformas": [
-        "PlayStation Vita",
         "PlayStation 2",
         "PlayStation 4",
         "Sega Saturn",
-        "Nintendo Switch"
+        "Nintendo Switch",
+        "Xbox 360"
     ]
 }
