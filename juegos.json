@@ -12,13 +12,14 @@
         109462,
         2003,
         1291,
-        11137
+        11137,
+        2973
     ],
     "plataformas": [
-        "Sega Saturn",
         "Nintendo Switch",
         "Xbox 360",
         "PlayStation 3",
-        "PlayStation 5"
+        "PlayStation 5",
+        "Xbox"
     ]
 }
