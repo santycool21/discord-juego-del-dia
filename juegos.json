@@ -14,13 +14,14 @@
         1291,
         11137,
         2973,
-        3212
+        3212,
+        376
     ],
     "plataformas": [
-        "Xbox 360",
         "PlayStation 3",
         "PlayStation 5",
         "Xbox",
-        "Xbox One"
+        "Xbox One",
+        "PlayStation 2"
     ]
 }
