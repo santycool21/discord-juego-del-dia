@@ -16,13 +16,14 @@
         2973,
         3212,
         376,
-        115284
+        115284,
+        1101
     ],
     "plataformas": [
-        "PlayStation 5",
         "Xbox",
         "Xbox One",
         "PlayStation 2",
-        "Nintendo Switch"
+        "Nintendo Switch",
+        "Nintendo 3DS"
     ]
 }
