@@ -19,13 +19,14 @@
         115284,
         1101,
         116146,
-        478
+        478,
+        2324
     ],
     "plataformas": [
-        "PlayStation 2",
         "Nintendo Switch",
         "Nintendo 3DS",
         "PlayStation 4",
-        "Xbox 360"
+        "Xbox 360",
+        "Nintendo 64"
     ]
 }
