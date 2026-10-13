@@ -21,13 +21,14 @@
         116146,
         478,
         2324,
-        2899
+        2899,
+        874
     ],
     "plataformas": [
-        "Nintendo 3DS",
         "PlayStation 4",
         "Xbox 360",
         "Nintendo 64",
-        "Game Boy Advance"
+        "Game Boy Advance",
+        "PlayStation 2"
     ]
 }
