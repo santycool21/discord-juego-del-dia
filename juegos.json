@@ -24,13 +24,14 @@
         2899,
         874,
         2599,
-        11397
+        11397,
+        28204
     ],
     "plataformas": [
-        "Nintendo 64",
         "Game Boy Advance",
         "PlayStation 2",
         "Nintendo Switch",
-        "PlayStation 3"
+        "PlayStation 3",
+        "Xbox One"
     ]
 }
