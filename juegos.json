@@ -27,13 +27,14 @@
         11397,
         28204,
         1941,
-        8284
+        8284,
+        1622
     ],
     "plataformas": [
-        "Nintendo Switch",
         "PlayStation 3",
         "Xbox One",
         "PlayStation 4",
-        "Nintendo DS"
+        "Nintendo DS",
+        "Dreamcast"
     ]
 }
