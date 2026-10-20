@@ -28,13 +28,14 @@
         28204,
         1941,
         8284,
-        1622
+        1622,
+        11625
     ],
     "plataformas": [
-        "PlayStation 3",
         "Xbox One",
         "PlayStation 4",
         "Nintendo DS",
-        "Dreamcast"
+        "Dreamcast",
+        "Android"
     ]
 }
