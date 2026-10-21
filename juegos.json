@@ -29,13 +29,14 @@
         1941,
         8284,
         1622,
-        11625
+        11625,
+        1561
     ],
     "plataformas": [
-        "Xbox One",
         "PlayStation 4",
         "Nintendo DS",
         "Dreamcast",
-        "Android"
+        "Android",
+        "Game Boy"
     ]
 }
