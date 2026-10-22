@@ -30,13 +30,14 @@
         8284,
         1622,
         11625,
-        1561
+        1561,
+        475
     ],
     "plataformas": [
-        "PlayStation 4",
         "Nintendo DS",
         "Dreamcast",
         "Android",
-        "Game Boy"
+        "Game Boy",
+        "PlayStation 3"
     ]
 }
