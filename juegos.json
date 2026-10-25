@@ -33,13 +33,14 @@
         1561,
         475,
         7504,
-        379
+        379,
+        832
     ],
     "plataformas": [
-        "Android",
         "Game Boy",
         "PlayStation 3",
         "PlayStation 4",
-        "PlayStation 2"
+        "PlayStation 2",
+        "iOS"
     ]
 }
