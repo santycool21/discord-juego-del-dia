@@ -38,13 +38,14 @@
         11186,
         2687,
         1161,
-        341
+        341,
+        152
     ],
     "plataformas": [
-        "iOS",
         "Xbox One",
         "Nintendo 3DS",
         "PlayStation 3",
-        "PlayStation"
+        "PlayStation",
+        "PlayStation 4"
     ]
 }
