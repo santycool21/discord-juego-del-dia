@@ -39,13 +39,14 @@
         2687,
         1161,
         341,
-        152
+        152,
+        333
     ],
     "plataformas": [
-        "Xbox One",
         "Nintendo 3DS",
         "PlayStation 3",
         "PlayStation",
-        "PlayStation 4"
+        "PlayStation 4",
+        "Sega Saturn"
     ]
 }
