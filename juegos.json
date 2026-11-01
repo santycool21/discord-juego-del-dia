@@ -40,13 +40,14 @@
         1161,
         341,
         152,
-        333
+        333,
+        191419
     ],
     "plataformas": [
-        "Nintendo 3DS",
         "PlayStation 3",
         "PlayStation",
         "PlayStation 4",
-        "Sega Saturn"
+        "Sega Saturn",
+        "Nintendo Switch"
     ]
 }
