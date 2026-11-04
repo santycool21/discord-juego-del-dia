@@ -43,13 +43,14 @@
         333,
         191419,
         1221,
-        11642
+        11642,
+        247
     ],
     "plataformas": [
-        "PlayStation 4",
         "Sega Saturn",
         "Nintendo Switch",
         "PlayStation 2",
-        "iOS"
+        "iOS",
+        "PlayStation 3"
     ]
 }
