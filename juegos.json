@@ -46,13 +46,14 @@
         11642,
         247,
         25657,
-        138949
+        138949,
+        1069
     ],
     "plataformas": [
-        "PlayStation 2",
         "iOS",
         "PlayStation 3",
         "Xbox Series X|S",
-        "PlayStation 5"
+        "PlayStation 5",
+        "Nintendo 3DS"
     ]
 }
