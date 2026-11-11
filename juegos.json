@@ -50,13 +50,14 @@
         1069,
         115653,
         3048,
-        880
+        880,
+        3812
     ],
     "plataformas": [
-        "PlayStation 5",
         "Nintendo 3DS",
         "Nintendo Switch",
         "PlayStation 4",
-        "PlayStation 3"
+        "PlayStation 3",
+        "Xbox One"
     ]
 }
