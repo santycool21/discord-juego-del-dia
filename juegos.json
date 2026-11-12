@@ -51,13 +51,14 @@
         115653,
         3048,
         880,
-        3812
+        3812,
+        1517
     ],
     "plataformas": [
-        "Nintendo 3DS",
         "Nintendo Switch",
         "PlayStation 4",
         "PlayStation 3",
-        "Xbox One"
+        "Xbox One",
+        "Game Boy Advance"
     ]
 }
