@@ -52,13 +52,14 @@
         3048,
         880,
         3812,
-        1517
+        1517,
+        214973
     ],
     "plataformas": [
-        "Nintendo Switch",
         "PlayStation 4",
         "PlayStation 3",
         "Xbox One",
-        "Game Boy Advance"
+        "Game Boy Advance",
+        "Android"
     ]
 }
