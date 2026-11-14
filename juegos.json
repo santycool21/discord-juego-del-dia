@@ -53,13 +53,14 @@
         880,
         3812,
         1517,
-        214973
+        214973,
+        546
     ],
     "plataformas": [
-        "PlayStation 4",
         "PlayStation 3",
         "Xbox One",
         "Game Boy Advance",
-        "Android"
+        "Android",
+        "Xbox 360"
     ]
 }
