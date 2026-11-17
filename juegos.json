@@ -56,13 +56,14 @@
         214973,
         546,
         1025,
-        980
+        980,
+        1578
     ],
     "plataformas": [
-        "Game Boy Advance",
         "Android",
         "Xbox 360",
         "Nintendo 3DS",
-        "Nintendo 64"
+        "Nintendo 64",
+        "PlayStation 3"
     ]
 }
