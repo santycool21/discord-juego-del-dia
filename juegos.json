@@ -57,13 +57,14 @@
         546,
         1025,
         980,
-        1578
+        1578,
+        3019
     ],
     "plataformas": [
-        "Android",
         "Xbox 360",
         "Nintendo 3DS",
         "Nintendo 64",
-        "PlayStation 3"
+        "PlayStation 3",
+        "Xbox One"
     ]
 }
