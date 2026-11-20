@@ -59,13 +59,14 @@
         980,
         1578,
         3019,
-        384205
+        384205,
+        819
     ],
     "plataformas": [
-        "Nintendo 3DS",
         "Nintendo 64",
         "PlayStation 3",
         "Xbox One",
-        "Android"
+        "Android",
+        "Dreamcast"
     ]
 }
