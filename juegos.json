@@ -61,13 +61,14 @@
         3019,
         384205,
         819,
-        132516
+        132516,
+        18866
     ],
     "plataformas": [
-        "PlayStation 3",
         "Xbox One",
         "Android",
         "Dreamcast",
-        "Xbox Series X|S"
+        "Xbox Series X|S",
+        "Nintendo Switch"
     ]
 }
