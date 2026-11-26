@@ -65,13 +65,14 @@
         18866,
         3078,
         1342,
-        483
+        483,
+        8366
     ],
     "plataformas": [
-        "Xbox Series X|S",
         "Nintendo Switch",
         "Xbox 360",
         "PlayStation 4",
-        "PlayStation 2"
+        "PlayStation 2",
+        "Xbox 360"
     ]
 }
