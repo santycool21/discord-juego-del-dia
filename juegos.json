@@ -66,13 +66,14 @@
         3078,
         1342,
         483,
-        8366
+        8366,
+        2033
     ],
     "plataformas": [
-        "Nintendo Switch",
         "Xbox 360",
         "PlayStation 4",
         "PlayStation 2",
-        "Xbox 360"
+        "Xbox 360",
+        "PlayStation 3"
     ]
 }
