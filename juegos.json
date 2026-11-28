@@ -67,13 +67,14 @@
         1342,
         483,
         8366,
-        2033
+        2033,
+        2165
     ],
     "plataformas": [
-        "Xbox 360",
         "PlayStation 4",
         "PlayStation 2",
         "Xbox 360",
-        "PlayStation 3"
+        "PlayStation 3",
+        "Xbox Series X|S"
     ]
 }
